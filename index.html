@@ -750,53 +750,59 @@ document.getElementById('donate-option').addEventListener('click', function() {
 });
 
 
-        document.getElementById('bp-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const form = event.target;
-            const formData = new URLSearchParams(new FormData(form));
+       document.getElementById('bp-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new URLSearchParams(new FormData(form));
 
-            // Submit data to Google Form
-            fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLScFXLYaA1LVDSW3xWb0uzflWqw84jUa304Ti9GVEHmxTX2Dfg/formResponse', {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: formData.toString()
-            }).then(() => {
-                console.log('Form submitted successfully.');
-            }).catch((error) => {
-                console.error('Error submitting form:', error);
-            });
+    // Submit data to Google Form
+    fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLScFXLYaA1LVDSW3xWb0uzflWqw84jUa304Ti9GVEHmxTX2Dfg/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formData.toString()
+    }).then(() => {
+        console.log('Form submitted successfully.');
+    }).catch((error) => {
+        console.error('Error submitting form:', error);
+    });
 
-            // Fetch data from Google Sheets
-            fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTuEGt2opWzsauJz7m8g77FiYXx7brzx-1Em2dY8BzWBZtWr1p1bSXwtvknaobV_YOkbEeU6m5IDNVl/pub?output=csv')
-            .then(response => response.text())
-            .then(csvText => {
-                const systolicValues = [];
-                const diastolicValues = [];
-                const rows = csvText.split('\n').slice(1);
-                rows.forEach(row => {
-                    const cols = row.split(',');
-                    systolicValues.push(parseInt(cols[cols.length - 2]));
-                    diastolicValues.push(parseInt(cols[cols.length - 1]));
-                });
-
-                // Get user's systolic and diastolic values
-                const userSystolic = parseInt(form.querySelector('input[name="entry.687029626"]').value);
-                const userDiastolic = parseInt(form.querySelector('input[name="entry.1004921530"]').value);
-
-                // Plot charts
-                plotChart('systolicChart', systolicValues, userSystolic, 'Sistólica');
-                plotChart('diastolicChart', diastolicValues, userDiastolic, 'Diastólica');
-
-                // Play sound if necessary
-                if (userSystolic >= 130 || userDiastolic >= 80) {
-                    const audio = new Audio('https://github.com/andrefrsilva/sheets2network/raw/refs/heads/main/Turbinada_edit_1.mp3');
-                    audio.play();
-                }
-            });
+    // Fetch data from Google Sheets
+    fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTuEGt2opWzsauJz7m8g77FiYXx7brzx-1Em2dY8BzWBZtWr1p1bSXwtvknaobV_YOkbEeU6m5IDNVl/pub?output=csv')
+    .then(response => response.text())
+    .then(csvText => {
+        const systolicValues = [];
+        const diastolicValues = [];
+        const rows = csvText.split('\n').slice(1);
+        rows.forEach(row => {
+            const cols = row.split(',');
+            systolicValues.push(parseInt(cols[cols.length - 2]));
+            diastolicValues.push(parseInt(cols[cols.length - 1]));
         });
+
+        // Get user's systolic and diastolic values
+        const userSystolic = parseInt(form.querySelector('input[name="entry.687029626"]').value);
+        const userDiastolic = parseInt(form.querySelector('input[name="entry.1004921530"]').value);
+
+        // Plot charts
+        plotChart('systolicChart', systolicValues, userSystolic, 'Sistólica');
+        plotChart('diastolicChart', diastolicValues, userDiastolic, 'Diastólica');
+
+        // Ensure audio plays when necessary
+        if (userSystolic >= 130 || userDiastolic >= 80) {
+            const audio = new Audio('https://github.com/andrefrsilva/sheets2network/raw/refs/heads/main/Turbinada_edit_1.mp3');
+            
+            // Play audio only when user interacts (for mobile compatibility)
+            audio.play().catch(error => {
+                console.error('Audio playback failed:', error);
+                alert('Audio playback was blocked by your browser. Please click to allow audio.');
+            });
+        }
+    });
+});
+
 
    function plotChart(canvasId, dataValues, userValue, label) {
     const ctx = document.getElementById(canvasId).getContext('2d');
