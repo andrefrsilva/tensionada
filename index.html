@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Está #Tensionada?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include external CSS libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Include Anime.js for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
+    <!-- Include Chart.js for histograms -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <!-- Include Chart.js Annotation Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.1.0"></script>
+    <!-- Include custom CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2em;
+            text-align: center;
+            color: #ff0000;
+            margin-top: 20px;
+            max-width: 100%;
+            overflow: hidden;
+            animation: heartbeat 1.2s infinite;
+        }
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            10% {
+                transform: scale(1.7);
+            }
+            20% {
+                transform: scale(1);
+            }
+            30% {
+                transform: scale(2);
+            }
+            70% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .subtitle {
+            margin: 20px auto;
+            font-size: 1.2em;
+        }
+        .subtitle a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+        .intro {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+            margin: 20px 0;
+        }
+        .option {
+            width: 50%;
+            padding: 120px;
+            text-align: center;
+            background: linear-gradient(45deg, #ff0000, #0000ff);
+            color: #fff;
+            font-size: 2em;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 0;
+            position: relative;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: 2px solid #fff;
+            box-sizing: border-box;
+        }
+        .option:hover {
+            background: linear-gradient(45deg, #0000ff, #ff0000);
+        }
+        .section {
+            display: none;
+            margin-top: 40px; /* Increased margin */
+        }
+        .map-container {
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 480px;
+            border: none;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        .checklist li {
+            margin: 15px 0; /* Increased margin */
+            display: flex;
+            align-items: center;
+            font-size: 1.2em;
+        }
+        .checklist input[type="checkbox"] {
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border: 2px solid #fff;
+            margin-right: 15px;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+        }
+        .checklist input[type="checkbox"]:checked::before {
+            content: '✔';
+            position: absolute;
+            top: -2px;
+            left: 4px;
+            color: #00ff00;
+            font-size: 1.5em;
+        }
+        .form-section {
+            margin-top: 40px; /* Increased margin */
+            text-align: left;
+        }
+        .form-section label {
+            display: block;
+            margin: 20px 0 10px; /* Increased margins */
+            font-size: 1.1em;
+        }
+        .form-section input,
+        .form-section select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            color: #000;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box; /* Added this line */
+        }
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff0000, #0000ff);
+            color: #fff;
+            font-size: 1.5em;
+            border: 2px solid #fff;
+            cursor: pointer;
+            margin-top: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+        .submit-button:hover {
+            background: linear-gradient(45deg, #0000ff, #ff0000);
+        }
+        .charts {
+            width: 100%;
+            margin: 40px 0; /* Increased margin */
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: 40px; /* Increased margin */
+        }
+        .share-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            color: #000;
+            font-size: 1.5em;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 40px; /* Increased margin */
+            text-transform: uppercase;
+            font-weight: bold;
+            border: 2px solid #fff;
+            box-sizing: border-box;
+        }
+        .share-button:hover {
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+        }
+        .participants {
+            margin: 40px 0; /* Increased margin */
+            text-align: center;
+        }
+        .participants h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .participants iframe,
+        .participants blockquote {
+            margin: 20px auto;
+            max-width: 100%;
+        }
+        .footer {
+            background: #111;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            font-size: 0.9em;
+        }
+        .footer a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+        /* Animations for buttons */
+        .hearts, .money {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            pointer-events: none;
+            opacity: 0;
+        }
+        .hearts img, .money img {
+            width: 50px;
+            height: 50px;
+            animation: floatUp 1s forwards;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translate(-50%, -50%) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -150%) scale(1);
+                opacity: 0;
+            }
+        }
+        @media (max-width: 600px) {
+            .option {
+                padding: 30px;
+                font-size: 1.5em;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            .checklist li {
+                font-size: 1em;
+            }
+            .form-section label {
+                font-size: 1em;
+            }
+            .submit-button, .share-button {
+                font-size: 1.2em;
+            }
+            .radio-group label {
+                font-size: 1em;
+            }
+        }
+        /* Radio Buttons Styling */
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .radio-group label {
+            margin: 5px;
+            position: relative;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        .radio-group input[type="radio"] {
+            display: none;
+        }
+
+        .radio-group input[type="radio"] + span {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .radio-group input[type="radio"]:checked + span {
+            background: #ff0000;
+        }
+
+        .radio-group label:hover span {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Está #Tensionada?</h1>
+        <img src="https://media.tenor.com/QTyARGOVFsUAAAAM/ana-malhoa-la-makina.gif" alt="Trulli" style="max-width: 100%; height: auto; border: 2px solid white;" width="300">
+
+        <div class="subtitle">
+            Faça Parte da <a href="https://www.missao7026.pt/" target="_blank">Missão da SPH</a> de controlar a Hipertensão em Portugal!
+        </div>
+        <div class="intro">
+            Se foi nomeado, tem 24 horas para medir a sua pressão arterial, senão tem de doar 10€ à SPH!
+        </div>
+        <div class="options">
+            <div class="option" id="measure-option">Medir</div>
+            <div class="option" id="donate-option">Doar</div>
+        </div>
+
+        <!-- Donate Section -->
+        <div class="section" id="donate-section">
+            <p>A sua doação ajudará a Sociedade Portuguesa de Hipertensão a combater a hipertensão em Portugal, através de campanhas de rastreio, workshops em escolas, estudos populacionais, etc.</p>
+            <button onclick="window.open('https://stripe.com/', '_blank')" class="submit-button">Doar 10€</button>
+        </div>
+
+        <!-- Measure Section -->
+        <div class="section" id="measure-section">
+            <h2>1) Ir a um Local Público inscrito para fazer a Medição</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/d/embed?mid=1KKP-FgQvOjAy5xQtJOoWrqqsjhAx180&ehbc=2E312F&noprof=1"></iframe>
+            </div>
+
+            <h2>2) Pensar nas 3 Pessoas que vai Nomear</h2>
+            <span>Escreva os nomes delas depois aqui em baixo e garanta que a mensagem lhes chega a tempo.</span>
+<br><br>
+            <h2>3) Medir a Tensão Arterial da Forma Correta</h2>
+            <ul class="checklist">
+                <li><input type="checkbox"> Repouso: Descanse 5 minutos antes.</li>
+                <li><input type="checkbox"> Posição corporal: Sente-se com as costas apoiadas e pés no chão.</li>
+                <li><input type="checkbox"> Braço: Mantenha o braço apoiado, à altura do coração.</li>
+                <li><input type="checkbox"> Manga: Coloque a manga do esfigmomanómetro sem roupa por baixo.</li>
+                <li><input type="checkbox"> Pulso: Manga 2-3 cm acima da prega do cotovelo.</li>
+                <li><input type="checkbox"> Silêncio: Fique em silêncio e relaxado durante a medição.</li>
+                <li><input type="checkbox"> Evitar estímulos: Não falar, comer ou mexer-se.</li>
+                <li><input type="checkbox"> Dupla medição: Medir duas vezes, com 1-2 minutos de intervalo.</li>
+            </ul>
+
+            <h2>4) Registar os Valores</h2>
+            <p>Todos os dados submetidos são anónimos e apenas para os gráficos que aqui vemos e processamento pela SPH.</p>
+            <p><a href="#" target="_blank">Política de Dados</a></p>
+
+            <!-- Form Section -->
+            <div class="form-section">
+                <form id="bp-form">
+                    <!-- Form fields -->
+                    <label>Local</label>
+                    <select name="entry.1583274680" required>
+                        <option value="">Selecione...</option>
+                        <option>Aveiro</option>
+                        <option>Beja</option>
+                        <option>Braga</option>
+                        <option>Bragança</option>
+                        <option>Castelo Branco</option>
+                        <option>Coimbra</option>
+                        <option>Évora</option>
+                        <option>Faro</option>
+                        <option>Guarda</option>
+                        <option>Leiria</option>
+                        <option>Lisboa</option>
+                        <option>Portalegre</option>
+                        <option>Porto</option>
+                        <option>Santarém</option>
+                        <option>Setúbal</option>
+                        <option>Viana do Castelo</option>
+                        <option>Vila Real</option>
+                        <option>Viseu</option>
+                        <option>Açores</option>
+                        <option>Madeira</option>
+                    </select>
+
+                    <label>Idade</label>
+                    <input type="number" name="entry.696212112" required>
+
+                    <label>Sexo</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1319128627" value="Masculino" required>
+                            <span>Masculino</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1319128627" value="Feminino">
+                            <span>Feminino</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1319128627" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Pratica exercício físico regular?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1726477168" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1726477168" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1726477168" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Fuma ou já fumou?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.860347577" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.860347577" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.860347577" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Tem Diabetes?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.685994722" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.685994722" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.685994722" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Tem Hipertensão?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.2046806102" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.2046806102" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.2046806102" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Faz medicação para a Hipertensão?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.972051495" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.972051495" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.972051495" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Algum dos seus pais tem Hipertensão?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.551042757" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.551042757" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.551042757" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Mede regularmente a Tensão Arterial?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.57857287" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.57857287" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.57857287" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Tem Médico de Família?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1051135997" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1051135997" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1051135997" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Costuma ler Livros?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1923615331" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1923615331" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1923615331" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Bebe Café todos os dias?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.2007058090" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.2007058090" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.2007058090" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Costuma beber Vinho Tinto?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1702996945" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1702996945" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1702996945" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>O seu Emprego envolve Esforço Físico significativo?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.227784712" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.227784712" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.227784712" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Costuma Dormir sempre pelo menos 8 horas?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.111959169" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.111959169" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.111959169" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <!-- Nomeados -->
+                    <label>Nomeados (Quem é que nomeia a seguir para medir a Tensão Arterial dentro das próximas 24h?)</label>
+                    <input type="text" name="nomeado1" required>
+                    <input type="text" name="nomeado2" required>
+                    <input type="text" name="nomeado3" required>
+
+                    <!-- Blood Pressure Inputs -->
+                    <label>Tensão Arterial Sistólica (número maior) (registe todos os algarismos)</label>
+                    <input type="number" name="entry.687029626" required min="30" max="260">
+
+                    <label>Tensão Arterial Diastólica (número menor) (registe todos os algarismos)</label>
+                    <input type="number" name="entry.1004921530" required min="30" max="260">
+
+                    <button type="submit" class="submit-button">Submeter</button>
+                </form>
+            </div>
+
+            <!-- Charts Section -->
+          <center>  
+          <div class="charts">
+              
+                <div class="chart-container">
+                    <canvas id="systolicChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="diastolicChart"></canvas>
+                </div>
+            </div>
+            </center>
+
+            <!-- Share Section -->
+            <h2>5) Partilhar!</h2>
+            <div class="share-button" id="download-button">Transferir a Imagem para Partilhar</div>
+        </div>
+
+        <!-- Participants Section -->
+        <div class="participants">
+            <h2>Outros que já participaram</h2>
+            <!-- YouTube Videos -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/XS6ysDFTbLU" frameborder="0" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/59LrsaH6ZaA" frameborder="0" allowfullscreen></iframe>
+            <!-- Instagram Posts -->
+            <!-- Replace with the new embed codes you provided -->
+          <center>
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DAKE757SNbp/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DAKE757SNbp/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DAKE757SNbp/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by memes and movies account (@netflixnmovies)</a></p></div></blockquote> <script async src="//www.instagram.com/embed.js"></script>
+          
+          
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C-5rkfRpTvZ/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/C-5rkfRpTvZ/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver essa foto no Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/C-5rkfRpTvZ/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Uma publicação compartilhada por The ALS Association (@als)</a></p></div></blockquote> <script async src="//www.instagram.com/embed.js"></script>
+          </center>
+            <!-- TikTok Videos -->
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@bhadbelieber/video/7236835471395933467" data-video-id="7236835471395933467" style="margin: 20px auto; width: 100%; min-width: 325px; max-width: 605px;">
+                <section></section>
+            </blockquote>
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@chery1cole/video/7196280061035564294" data-video-id="7196280061035564294" style="margin: 20px auto; width: 100%; min-width: 325px; max-width: 605px;">
+                <section></section>
+            </blockquote>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            © 2024
+            <br>By <a href="https://www.linkedin.com/in/andrefrsilva/" target="_blank">André</a> and <a href="https://www.linkedin.com/in/adrianacmonteiro/" target="_blank">Adriana</a><br>From Lisbon, with ❤️
+        </div>
+    </div>
+
+    <!-- Include external JS libraries -->
+    <script async src="https://www.instagram.com/embed.js"></script>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        // Button animations
+
+document.getElementById('measure-option').addEventListener('click', function() {
+    document.getElementById('measure-section').style.display = 'block';
+    document.getElementById('donate-section').style.display = 'none';
+
+    // Hearts animation using canvas-confetti
+    const defaults = {
+        spread: 360,
+        ticks: 100,
+        gravity: 0,
+        decay: 0.94,
+        startVelocity: 30,
+        shapes: ["heart"],
+        colors: ["#FFC0CB", "#FF69B4", "#FF1493", "#C71585"],
+    };
+
+    confetti({
+        ...defaults,
+        particleCount: 50,
+        scalar: 2,
+    });
+
+    confetti({
+        ...defaults,
+        particleCount: 25,
+        scalar: 3,
+    });
+
+    confetti({
+        ...defaults,
+        particleCount: 10,
+        scalar: 4,
+    });
+});
+
+document.getElementById('donate-option').addEventListener('click', function() {
+    document.getElementById('donate-section').style.display = 'block';
+    document.getElementById('measure-section').style.display = 'none';
+
+    // Money animation using canvas-confetti
+    const defaults = {
+        spread: 360,
+        ticks: 100,
+        gravity: 0,
+        decay: 0.94,
+        startVelocity: 30,
+        shapes: ["square"],
+        colors: ["#FFD700", "#FFFF00", "#FFA500", "#FF8C00"],
+    };
+
+    confetti({
+        ...defaults,
+        particleCount: 50,
+        scalar: 2,
+    });
+
+    confetti({
+        ...defaults,
+        particleCount: 25,
+        scalar: 3,
+    });
+
+    confetti({
+        ...defaults,
+        particleCount: 10,
+        scalar: 4,
+    });
+});
+
+
+        document.getElementById('bp-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new URLSearchParams(new FormData(form));
+
+            // Submit data to Google Form
+            fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLScFXLYaA1LVDSW3xWb0uzflWqw84jUa304Ti9GVEHmxTX2Dfg/formResponse', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData.toString()
+            }).then(() => {
+                console.log('Form submitted successfully.');
+            }).catch((error) => {
+                console.error('Error submitting form:', error);
+            });
+
+            // Fetch data from Google Sheets
+            fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTuEGt2opWzsauJz7m8g77FiYXx7brzx-1Em2dY8BzWBZtWr1p1bSXwtvknaobV_YOkbEeU6m5IDNVl/pub?output=csv')
+            .then(response => response.text())
+            .then(csvText => {
+                const systolicValues = [];
+                const diastolicValues = [];
+                const rows = csvText.split('\n').slice(1);
+                rows.forEach(row => {
+                    const cols = row.split(',');
+                    systolicValues.push(parseInt(cols[cols.length - 2]));
+                    diastolicValues.push(parseInt(cols[cols.length - 1]));
+                });
+
+                // Get user's systolic and diastolic values
+                const userSystolic = parseInt(form.querySelector('input[name="entry.687029626"]').value);
+                const userDiastolic = parseInt(form.querySelector('input[name="entry.1004921530"]').value);
+
+                // Plot charts
+                plotChart('systolicChart', systolicValues, userSystolic, 'Sistólica');
+                plotChart('diastolicChart', diastolicValues, userDiastolic, 'Diastólica');
+
+                // Play sound if necessary
+                if (userSystolic >= 130 || userDiastolic >= 80) {
+                    const audio = new Audio('https://github.com/andrefrsilva/sheets2network/raw/refs/heads/main/Turbinada_edit_1.mp3');
+                    audio.play();
+                }
+            });
+        });
+
+   function plotChart(canvasId, dataValues, userValue, label) {
+    const ctx = document.getElementById(canvasId).getContext('2d');
+    const bins = [];
+    for (let i = 30; i <= 250; i += 10) {
+        bins.push(i);
+    }
+    const dataCounts = new Array(bins.length).fill(0);
+
+    dataValues.forEach(value => {
+        const index = Math.floor((value - 30) / 10);
+        if (index >= 0 && index < dataCounts.length) {
+            dataCounts[index]++;
+        }
+    });
+
+    // Compute percentages
+    const totalCount = dataValues.length;
+    const dataPercentages = dataCounts.map(count => (count / totalCount) * 100);
+
+    const backgroundColors = bins.map(bin => {
+        if (label === 'Sistólica') {
+            if (bin < 90) return 'lightblue';
+            if (bin >= 180) return 'red';
+            if (bin >= 140 && bin <= 170) return 'darkorange';
+            if (bin >= 130 && bin <= 139) return 'orange';
+            if (bin >= 90 && bin <= 120) return 'green';
+            return 'lightblue';
+        } else {
+            if (bin < 60) return 'lightblue';
+            if (bin >= 120) return 'red';
+            if (bin >= 90 && bin <= 110) return 'darkorange';
+            if (bin >= 80 && bin <= 89) return 'orange';
+            if (bin >= 60 && bin <= 79) return 'green';
+            return 'lightblue';
+        }
+    });
+
+    // Find the bin index where the user's value falls
+    const userBinIndex = Math.floor((userValue - 30) / 10);
+
+    // Create borderColor and borderWidth arrays
+    const borderColors = backgroundColors.map((color, index) => index === userBinIndex ? 'white' : 'rgba(255,255,255,0.2)');
+    const borderWidths = backgroundColors.map((color, index) => index === userBinIndex ? 3 : 1);
+
+  // Create a separate canvas for the pattern
+const patternCanvas = document.createElement('canvas');
+patternCanvas.width = 10;
+patternCanvas.height = 10;
+const patternCtx = patternCanvas.getContext('2d');
+
+// Fill the pattern canvas with the background color of the user's bin
+patternCtx.fillStyle = backgroundColors[userBinIndex];
+patternCtx.fillRect(0, 0, patternCanvas.width, patternCanvas.height);
+
+// Draw stripes for the pattern over the background color
+patternCtx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+patternCtx.lineWidth = 2;
+patternCtx.beginPath();
+patternCtx.moveTo(0, 0);
+patternCtx.lineTo(10, 10);
+patternCtx.stroke();
+patternCtx.beginPath();
+patternCtx.moveTo(10, 0);
+patternCtx.lineTo(0, 10);
+patternCtx.stroke();
+
+const pattern = ctx.createPattern(patternCanvas, 'repeat');
+
+    // Apply pattern to user's bin
+    const barBackgroundColors = backgroundColors.map((color, index) => {
+        if (index === userBinIndex) {
+            return pattern;
+        } else {
+            return color;
+        }
+    });
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: bins.map(bin => bin.toString()),
+            datasets: [{
+                data: dataPercentages,
+                backgroundColor: barBackgroundColors,
+                borderColor: borderColors,
+                borderWidth: borderWidths
+            }]
+        },
+        options: {
+    scales: {
+        x: {
+            title: {
+                display: true,
+                text: label,
+                color: '#fff',
+                font: {
+                    size: 20 // Increase font size of x-axis title
+                }
+            },
+            ticks: {
+                color: '#fff',
+                font: {
+                    size: 14 // Increase font size of x-axis labels
+                },
+                maxRotation: 90,
+                minRotation: 90,
+                autoSkip: false // Ensure all labels are shown
+            },
+            grid: {
+                color: '#555'
+            }
+        },
+        y: {
+            beginAtZero: true,
+            title: {
+                display: true,
+                color: '#fff',
+                font: {
+                    size: 20 // Increase font size of y-axis title
+                }
+            },
+            ticks: {
+                color: '#fff',
+                font: {
+                    size: 14 // Increase font size of y-axis labels
+                },
+                callback: function(value) {
+                    return value + '%';
+                }
+            },
+            grid: {
+                color: '#555'
+            }
+        }
+    },
+    plugins: {
+        legend: {
+            display: false
+        }
+    }
+}
+
+    });
+}
+
+
+        // Image download functionality
+document.getElementById('download-button').addEventListener('click', function() {
+    const canvas1 = document.getElementById('systolicChart');
+    const canvas2 = document.getElementById('diastolicChart');
+    const title = "Está #Tensionada? (SPH) " + new Date().toLocaleString();
+
+    // Create a temporary canvas to combine everything
+    const tempCanvas = document.createElement('canvas');
+    tempCanvas.width = 2000;
+    tempCanvas.height = 2400;
+    const ctx = tempCanvas.getContext('2d');
+
+    // Draw background
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+    // Draw title
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 60px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText(title, tempCanvas.width / 2, 100);
+
+    // Draw charts
+    ctx.drawImage(canvas1, 100, 150, 1800, 800);
+    ctx.drawImage(canvas2, 100, 1000, 1800, 800);
+
+    // Draw Nomeados
+    ctx.font = 'bold 48px Arial';
+    ctx.fillText('Nomeados:', tempCanvas.width / 2, 1900);
+    const nomeado1 = document.querySelector('input[name="nomeado1"]').value;
+    const nomeado2 = document.querySelector('input[name="nomeado2"]').value;
+    const nomeado3 = document.querySelector('input[name="nomeado3"]').value;
+    ctx.font = '48px Arial';
+    ctx.fillText(nomeado1, tempCanvas.width / 2, 2000);
+    ctx.fillText(nomeado2, tempCanvas.width / 2, 2100);
+    ctx.fillText(nomeado3, tempCanvas.width / 2, 2200);
+
+    // Download image
+    const link = document.createElement('a');
+    link.download = 'Tensionada.png';
+    link.href = tempCanvas.toDataURL('image/png', 1.0);
+    link.click();
+});
+
+    </script>
+</body>
+</html>
