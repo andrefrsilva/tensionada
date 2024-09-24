@@ -311,10 +311,10 @@
         <img src="https://media.tenor.com/QTyARGOVFsUAAAAM/ana-malhoa-la-makina.gif" alt="Trulli" style="max-width: 100%; height: auto; border: 2px solid white;" width="300">
 
         <div class="subtitle">
-            Faça Parte da <a href="https://www.missao7026.pt/" target="_blank">Missão da SPH</a> de controlar a Hipertensão em Portugal!
+            Faça Parte da Missão de controlar a Hipertensão em Portugal!
         </div>
         <div class="intro">
-            Se foi nomeado, tem 24 horas para medir a sua pressão arterial, senão tem de doar 10€ à SPH!
+            Se foi nomeado, tem 24 horas para medir a sua pressão arterial, senão tem de doar 10€!
         </div>
         <div class="options">
             <div class="option" id="measure-option">Medir</div>
@@ -323,7 +323,7 @@
 
         <!-- Donate Section -->
         <div class="section" id="donate-section">
-            <p>A sua doação ajudará a Sociedade Portuguesa de Hipertensão a combater a hipertensão em Portugal, através de campanhas de rastreio, workshops em escolas, estudos populacionais, etc.</p>
+            <p>A sua doação ajudará a combater a hipertensão em Portugal, através de campanhas de rastreio, workshops em escolas, estudos populacionais, etc.</p>
             <button onclick="window.open('https://stripe.com/', '_blank')" class="submit-button">Doar 10€</button>
         </div>
 
@@ -350,7 +350,7 @@
             </ul>
 
             <h2>4) Registar os Valores</h2>
-            <p>Todos os dados submetidos são anónimos e apenas para os gráficos que aqui vemos e processamento pela SPH.</p>
+            <p>Todos os dados submetidos são anónimos e apenas para os gráficos que aqui vemos e publicação dos resultados.</p>
             <p><a href="#" target="_blank">Política de Dados</a></p>
 
             <!-- Form Section -->
@@ -954,7 +954,7 @@ const pattern = ctx.createPattern(patternCanvas, 'repeat');
 document.getElementById('download-button').addEventListener('click', function() {
     const canvas1 = document.getElementById('systolicChart');
     const canvas2 = document.getElementById('diastolicChart');
-    const title = "Está #Tensionada? (SPH) " + new Date().toLocaleString();
+    const title = "Está #Tensionada? " + new Date().toLocaleString();
 
     // Create a temporary canvas to combine everything
     const tempCanvas = document.createElement('canvas');
