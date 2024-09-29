@@ -2,7 +2,14 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Atensão!</title>
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/0yLDmmxY/images.png">
+  <meta property="og:title" content="aTensão!">
+<meta property="og:description" content="Faça Parte da Missão de Controlar a Hipertensão em Portugal!">
+<meta property="og:image" content="https://i.postimg.cc/0yLDmmxY/images.png">
+<meta property="og:url" content="https://atensao.pt">
+<meta name="twitter:card" content="summary_large_image">
+
+    <title>aTensão!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Include external CSS libraries -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -306,7 +313,7 @@
 </head>
 <body>
 
-    <div class="container">
+<div class="container">
         <br>
         <h1>aTensão!</h1>
         <img src="https://i.postimg.cc/qMD1Pktw/giphy.webp;" width="300">
@@ -325,15 +332,12 @@
 
         <!-- Donate Section -->
         <div class="section" id="donate-section">
-            <p>A sua doação ajudará a combater a hipertensão em Portugal, através de campanhas de rastreio, workshops em escolas, estudos populacionais, etc.</p>
-            <button onclick="window.open('https://stripe.com/', '_blank')" class="submit-button">Doar 10€</button>
-        </div>
-
-        <!-- Measure Section -->
-        <div class="section" id="measure-section">
             
-            <h2>1) Medir a Tensão Arterial da Forma Correta</h2>
+            <h2>1) Preparar</h2>
             <ul class="checklist">
+              <li><input type="checkbox"> CASTIGO: Arranje um balde com água fria. (Ou pelo menos um copinho)</li>
+              <li><input type="checkbox"> ASSISTENTE: Arranje alguém que segure no balde de água até se saber se é para despejar ou não, consoante os valores da sua pressão arterial.</li>
+              <li><input type="checkbox"> Medidor: Arranje um medidor de braço ou vá a uma farmácia.</li>
                 <li><input type="checkbox"> Repouso: Descanse 5 minutos antes.</li>
                 <li><input type="checkbox"> Posição corporal: Sente-se com as costas apoiadas e pés no chão.</li>
                 <li><input type="checkbox"> Braço: Mantenha o braço apoiado numa mesa, à altura do coração.</li>
@@ -343,13 +347,29 @@
                 <li><input type="checkbox"> Dupla medição: Depois de medir uma vez, pode aguardar um minuto e medir outra vez. Depois registe aqui os valores mais baixos.</li>
             </ul>
 
-            <h2>2) Registar os Valores</h2>
-            <p>Todos os dados submetidos são anónimos e apenas para no fim divulgarmos os gráficos com os resultados de todos.</p>
+            <h2>2) Registar os Dados</h2>
+            <p>Todos os dados submetidos são anónimos e apenas para no fim vermos correlações e divulgarmos os gráficos com os resultados de todos.</p>
             <p><a href="#" target="_blank">Política de Dados</a></p>
 
             <!-- Form Section -->
             <div class="form-section">
                 <form id="bp-form">
+                   <label>Foi Nomeado?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.723699953" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.723699953" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.723699953" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+                  
                     <!-- Form fields -->
                     <label>Local</label>
                     <select name="entry.1583274680" required>
@@ -395,7 +415,7 @@
                         </label>
                     </div>
 
-                    <label>Pratica exercício físico regular?</label>
+                    <label>Pratica exercício físico regularmente?</label>
                     <div class="radio-group">
                         <label>
                             <input type="radio" name="entry.1726477168" value="Sim" required>
@@ -609,13 +629,18 @@
                     <input type="text" name="nomeado2" required>
                     <input type="text" name="nomeado3" required>
 
-                    <!-- Blood Pressure Inputs -->
+                    <br>
+                   <center><h2>3) Medir e Registar os Valores</h2></center>
+                  
+  <!-- Blood Pressure Inputs -->
                     <label>Tensão Arterial Sistólica (número maior) (registe todos os algarismos)</label>
-                    <input type="number" name="entry.687029626" required min="30" max="260">
+                    <input type="number" name="entry.687029626" required min="30" max="290">
 
                     <label>Tensão Arterial Diastólica (número menor) (registe todos os algarismos)</label>
-                    <input type="number" name="entry.1004921530" required min="30" max="260">
-
+                    <input type="number" name="entry.1004921530" required min="30" max="290">
+                  
+                  <br>
+                   <center><h2>4) Submeter e ver se leva com a Água ou não</h2></center>
                     <button type="submit" class="submit-button">Submeter</button>
                 </form>
             </div>
@@ -636,35 +661,377 @@
             <!-- Share Section -->
             <h2>5) Partilhar!</h2>
             <div class="share-button" id="download-button">Transferir a Imagem para Partilhar</div>
+ 
+                     <!-- Study -->
+          <br><br>
+            <h2>6) Controlar a Tensão Arterial</h2>
+          <p>Quer continuar o desafio e monitorizar a sua tensão arterial durante um mês? Junte-se ao nosso grupo.</p>
+          <a href="https://forms.gle/3Z1FJUoc1cutfADPA" target="_blank"><div class="share-button">Inscrever</div></a>
+ 
         </div>
 
+        <!-- Measure Section -->
+        <div class="section" id="measure-section">
+            
+            <h2>1) Preparar</h2>
+            <ul class="checklist">
+              <li><input type="checkbox"> Medidor: Arranje um medidor de braço ou vá a uma farmácia.</li>
+                <li><input type="checkbox"> Repouso: Descanse 5 minutos antes.</li>
+                <li><input type="checkbox"> Posição corporal: Sente-se com as costas apoiadas e pés no chão.</li>
+                <li><input type="checkbox"> Braço: Mantenha o braço apoiado numa mesa, à altura do coração.</li>
+                <li><input type="checkbox"> Manga: Coloque a manga do aparelho sem roupa por baixo.</li>
+                <li><input type="checkbox"> Silêncio: Fique em silêncio e relaxado durante a medição.</li>
+                <li><input type="checkbox"> Evitar estímulos: Não fale nem se mexa.</li>
+                <li><input type="checkbox"> Dupla medição: Depois de medir uma vez, pode aguardar um minuto e medir outra vez. Depois registe aqui os valores mais baixos.</li>
+            </ul>
+
+            <h2>2) Registar os Dados</h2>
+            <p>Todos os dados submetidos são anónimos e apenas para no fim vermos correlações e divulgarmos os gráficos com os resultados de todos.</p>
+            <p><a href="#" target="_blank">Política de Dados</a></p>
+
+            <!-- Form Section -->
+            <div class="form-section">
+                <form id="bp-form">
+                   <label>Foi Nomeado?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.723699953" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.723699953" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.723699953" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+                  
+                    <!-- Form fields -->
+                    <label>Local</label>
+                    <select name="entry.1583274680" required>
+                        <option value="">Selecione...</option>
+                        <option>Aveiro</option>
+                        <option>Beja</option>
+                        <option>Braga</option>
+                        <option>Bragança</option>
+                        <option>Castelo Branco</option>
+                        <option>Coimbra</option>
+                        <option>Évora</option>
+                        <option>Faro</option>
+                        <option>Guarda</option>
+                        <option>Leiria</option>
+                        <option>Lisboa</option>
+                        <option>Portalegre</option>
+                        <option>Porto</option>
+                        <option>Santarém</option>
+                        <option>Setúbal</option>
+                        <option>Viana do Castelo</option>
+                        <option>Vila Real</option>
+                        <option>Viseu</option>
+                        <option>Açores</option>
+                        <option>Madeira</option>
+                    </select>
+
+                    <label>Idade</label>
+                    <input type="number" name="entry.696212112" required>
+
+                    <label>Sexo</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1319128627" value="Masculino" required>
+                            <span>Masculino</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1319128627" value="Feminino">
+                            <span>Feminino</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1319128627" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Pratica exercício físico regularmente?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1726477168" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1726477168" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1726477168" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Fuma ou já fumou?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.860347577" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.860347577" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.860347577" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Tem Diabetes?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.685994722" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.685994722" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.685994722" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Tem Hipertensão?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.2046806102" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.2046806102" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.2046806102" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Faz medicação para a Hipertensão?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.972051495" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.972051495" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.972051495" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Algum dos seus pais tem Hipertensão?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.551042757" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.551042757" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.551042757" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Mede regularmente a Tensão Arterial?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.57857287" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.57857287" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.57857287" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Tem Médico de Família?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1051135997" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1051135997" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1051135997" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Costuma ler Livros?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1923615331" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1923615331" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1923615331" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Bebe Café todos os dias?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.2007058090" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.2007058090" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.2007058090" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Costuma beber Vinho Tinto?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1702996945" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1702996945" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1702996945" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>O seu Emprego envolve Esforço Físico significativo?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.227784712" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.227784712" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.227784712" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Costuma Dormir sempre pelo menos 8 horas?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.111959169" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.111959169" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.111959169" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <!-- Nomeados -->
+                    <label>Nomeados (Quem é que nomeia a seguir para medir a Tensão Arterial dentro das próximas 24h?)</label>
+                    <input type="text" name="nomeado1" required>
+                    <input type="text" name="nomeado2" required>
+                    <input type="text" name="nomeado3" required>
+
+                    <br>
+                   <center><h2>3) Medir e Registar os Valores</h2></center>
+                  
+  <!-- Blood Pressure Inputs -->
+                    <label>Tensão Arterial Sistólica (número maior) (registe todos os algarismos)</label>
+                    <input type="number" name="entry.687029626" required min="30" max="290">
+
+                    <label>Tensão Arterial Diastólica (número menor) (registe todos os algarismos)</label>
+                    <input type="number" name="entry.1004921530" required min="30" max="290">
+                  
+                    <br>
+                   <center><h2>4) Submeter e ver se os Valores estão bem ou não</h2></center>
+                    <button type="submit" class="submit-button">Submeter</button>
+                </form>
+            </div>
+
+            <!-- Charts Section -->
+          <center>  
+          <div class="charts">
+              
+                <div class="chart-container">
+                    <canvas id="systolicChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="diastolicChart"></canvas>
+                </div>
+            </div>
+            </center>
+
+            <!-- Share Section -->
+            <h2>5) Partilhar!</h2>
+            <div class="share-button" id="download-button">Transferir a Imagem para Partilhar</div>
+          
+             <!-- Study -->
+          <br><br>
+            <h2>6) Controlar a Tensão Arterial</h2>
+          <p>Quer continuar o desafio e monitorizar a sua tensão arterial durante um mês? Junte-se ao nosso grupo.</p>
+          <a href="https://forms.gle/3Z1FJUoc1cutfADPA" target="_blank"><div class="share-button">Inscrever</div></a>
+          
+        </div>
+      
         <!-- Participants Section -->
         <div class="participants">
             <h2>Outros que já participaram</h2>
             <!-- YouTube Videos -->
             <iframe width="560" height="315" src="https://www.youtube.com/embed/XS6ysDFTbLU" frameborder="0" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/59LrsaH6ZaA" frameborder="0" allowfullscreen></iframe>
             <!-- Instagram Posts -->
-            <!-- Replace with the new embed codes you provided -->
-          <center>
-          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DAKE757SNbp/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DAKE757SNbp/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DAKE757SNbp/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by memes and movies account (@netflixnmovies)</a></p></div></blockquote> <script async src="//www.instagram.com/embed.js"></script>
           
-          
-          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C-5rkfRpTvZ/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/C-5rkfRpTvZ/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver essa foto no Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/C-5rkfRpTvZ/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Uma publicação compartilhada por The ALS Association (@als)</a></p></div></blockquote> <script async src="//www.instagram.com/embed.js"></script>
-          </center>
             <!-- TikTok Videos -->
             <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@bhadbelieber/video/7236835471395933467" data-video-id="7236835471395933467" style="margin: 20px auto; width: 100%; min-width: 325px; max-width: 605px;">
-                <section></section>
-            </blockquote>
-            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@chery1cole/video/7196280061035564294" data-video-id="7196280061035564294" style="margin: 20px auto; width: 100%; min-width: 325px; max-width: 605px;">
                 <section></section>
             </blockquote>
         </div>
 
         <!-- Footer -->
         <div class="footer">
+          <a href="https://world-heart-federation.org/world-heart-day/" target="_blank">
+<img src="https://world-heart-federation.org/world-heart-day/wp-content/uploads/sites/2/2021/05/WHD-logo.svg" alt="Trulli" width="150"></a>
+          <br><br>
+           <p> <a href="https://www.instagram.com/medicinupgram/" target="_blank">Instagram</a></p>
+           <p> <a href="https://www.medicinup.com/" target="_blank">MedicinUp</a></p>
+          <br>
             © 2024
-            <br>By <a href="https://www.linkedin.com/in/andrefrsilva/" target="_blank">André</a> and <a href="https://www.linkedin.com/in/adrianacmonteiro/" target="_blank">Adriana</a><br>From Lisbon, with ❤️
+            <br>By <a href="https://www.linkedin.com/in/andrefrsilva/" target="_blank">André</a> and <a href="https://www.linkedin.com/in/adrianacmonteiro/" target="_blank">Adriana</a><br>From Lisbon, with ❤️       
+           
         </div>
     </div>
 
@@ -673,8 +1040,6 @@
     <script async src="https://www.tiktok.com/embed.js"></script>
     <!-- Custom JavaScript -->
     <script>
-        // Button animations
-
 document.getElementById('measure-option').addEventListener('click', function() {
     document.getElementById('measure-section').style.display = 'block';
     document.getElementById('donate-section').style.display = 'none';
@@ -743,63 +1108,137 @@ document.getElementById('donate-option').addEventListener('click', function() {
     });
 });
 
+        // Define getColor function
+        function getColor(value, label) {
+            if (label === 'Sistólica') {
+                if (value < 90) return 'lightblue';
+                if (value >= 180) return 'red';
+                if (value >= 140 && value <= 179) return 'darkorange';
+                if (value >= 130 && value <= 139) return 'orange';
+                if (value >= 90 && value <= 129) return 'green';
+                return 'lightblue';
+            } else {
+                // Diastólica
+                if (value < 60) return 'lightblue';
+                if (value >= 120) return 'red';
+                if (value >= 90 && value <= 119) return 'darkorange';
+                if (value >= 80 && value <= 89) return 'orange';
+                if (value >= 60 && value <= 79) return 'green';
+                return 'lightblue';
+            }
+        }
 
-       document.getElementById('bp-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new URLSearchParams(new FormData(form));
+        // Adjust the 'bp-form' event listener
+        document.querySelectorAll('#bp-form').forEach(function(form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new URLSearchParams(new FormData(form));
 
-    // Submit data to Google Form
-    fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLScFXLYaA1LVDSW3xWb0uzflWqw84jUa304Ti9GVEHmxTX2Dfg/formResponse', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: formData.toString()
-    }).then(() => {
-        console.log('Form submitted successfully.');
-    }).catch((error) => {
-        console.error('Error submitting form:', error);
-    });
+                // Submit data to Google Form
+                fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLScFXLYaA1LVDSW3xWb0uzflWqw84jUa304Ti9GVEHmxTX2Dfg/formResponse', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: formData.toString()
+                }).then(() => {
+                    console.log('Form submitted successfully.');
+                }).catch((error) => {
+                    console.error('Error submitting form:', error);
+                });
 
-    // Fetch data from Google Sheets
-    fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTuEGt2opWzsauJz7m8g77FiYXx7brzx-1Em2dY8BzWBZtWr1p1bSXwtvknaobV_YOkbEeU6m5IDNVl/pub?output=csv')
-    .then(response => response.text())
-    .then(csvText => {
-        const systolicValues = [];
-        const diastolicValues = [];
-        const rows = csvText.split('\n').slice(1);
-        rows.forEach(row => {
-            const cols = row.split(',');
-            systolicValues.push(parseInt(cols[cols.length - 2]));
-            diastolicValues.push(parseInt(cols[cols.length - 1]));
+                // Fetch data from Google Sheets
+                fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTuEGt2opWzsauJz7m8g77FiYXx7brzx-1Em2dY8BzWBZtWr1p1bSXwtvknaobV_YOkbEeU6m5IDNVl/pub?output=csv')
+                .then(response => response.text())
+                .then(csvText => {
+                    const systolicValues = [];
+                    const diastolicValues = [];
+                    const rows = csvText.split('\n').slice(1);
+                    rows.forEach(row => {
+                        const cols = row.split(',');
+                        systolicValues.push(parseInt(cols[cols.length - 3]));
+                        diastolicValues.push(parseInt(cols[cols.length - 2]));
+                    });
+
+                    // Get user's systolic and diastolic values
+                    const userSystolic = parseInt(form.querySelector('input[name="entry.687029626"]').value);
+                    const userDiastolic = parseInt(form.querySelector('input[name="entry.1004921530"]').value);
+
+                    // Get colors
+                    const systolicColor = getColor(userSystolic, 'Sistólica');
+                    const diastolicColor = getColor(userDiastolic, 'Diastólica');
+
+                    // Plot charts
+                   plotChart(form, 'systolicChart', systolicValues, userSystolic, 'Sistólica');
+                   plotChart(form, 'diastolicChart', diastolicValues, userDiastolic, 'Diastólica');
+
+
+                    // Display the user's blood pressure values on top of the charts
+                    const chartsContainer = form.closest('.section').querySelector('.charts');
+
+                    const bpValuesContainer = document.createElement('div');
+                    bpValuesContainer.style.display = 'flex';
+                    bpValuesContainer.style.justifyContent = 'space-around';
+                    bpValuesContainer.style.margin = '20px 0';
+
+                    const systolicDisplay = document.createElement('div');
+                    systolicDisplay.textContent = 'Sistólica: ' + userSystolic;
+                    systolicDisplay.style.backgroundColor = systolicColor;
+                    systolicDisplay.style.color = 'white';
+                    systolicDisplay.style.fontSize = '2em';
+                    systolicDisplay.style.padding = '10px';
+                    systolicDisplay.style.borderRadius = '5px';
+
+                    const diastolicDisplay = document.createElement('div');
+                    diastolicDisplay.textContent = 'Diastólica: ' + userDiastolic;
+                    diastolicDisplay.style.backgroundColor = diastolicColor;
+                    diastolicDisplay.style.color = 'white';
+                    diastolicDisplay.style.fontSize = '2em';
+                    diastolicDisplay.style.padding = '10px';
+                    diastolicDisplay.style.borderRadius = '5px';
+
+                    bpValuesContainer.appendChild(systolicDisplay);
+                    bpValuesContainer.appendChild(diastolicDisplay);
+
+                    chartsContainer.insertBefore(bpValuesContainer, chartsContainer.firstChild);
+
+                    // Play audio based on blood pressure values
+                    if (systolicColor !== 'green' || diastolicColor !== 'green') {
+                        // Play alarm sound
+                        const audio = new Audio('https://github.com/andrefrsilva/tensionada/raw/refs/heads/main/Alarm%20Sound%20Effect.mp3');
+                        audio.play().catch(error => {
+                            console.error('Audio playback failed:', error);
+                            alert('Audio playback was blocked by your browser. Please click to allow audio.');
+                        });
+                    } else {
+                        // Play win sound
+                        const audio = new Audio('https://github.com/andrefrsilva/tensionada/raw/refs/heads/main/WIN%20sound%20effect%20no%20copyright.mp3');
+                        audio.play().catch(error => {
+                            console.error('Audio playback failed:', error);
+                            alert('Audio playback was blocked by your browser. Please click to allow audio.');
+                        });
+                    }
+
+                    // Store values for image download
+                 form.userSystolic = userSystolic;
+form.userDiastolic = userDiastolic;
+form.systolicColor = systolicColor;
+form.diastolicColor = diastolicColor;
+
+                });
+            });
         });
 
-        // Get user's systolic and diastolic values
-        const userSystolic = parseInt(form.querySelector('input[name="entry.687029626"]').value);
-        const userDiastolic = parseInt(form.querySelector('input[name="entry.1004921530"]').value);
+function plotChart(form, canvasId, dataValues, userValue, label) {
+    const ctx = form.closest('.section').querySelector('#' + canvasId).getContext('2d');
 
-        // Plot charts
-        plotChart('systolicChart', systolicValues, userSystolic, 'Sistólica');
-        plotChart('diastolicChart', diastolicValues, userDiastolic, 'Diastólica');
+    // Destroy existing chart if it exists
+    if (form[canvasId + 'ChartInstance']) {
+        form[canvasId + 'ChartInstance'].destroy();
+    }
 
-        // Ensure audio plays when necessary
-        if (userSystolic >= 130 || userDiastolic >= 80) {
-            const audio = new Audio('https://github.com/andrefrsilva/sheets2network/raw/refs/heads/main/Turbinada_edit_1.mp3');
-            
-            // Play audio only when user interacts (for mobile compatibility)
-            audio.play().catch(error => {
-                console.error('Audio playback failed:', error);
-                alert('Audio playback was blocked by your browser. Please click to allow audio.');
-            });
-        }
-    });
-});
-
-
-   function plotChart(canvasId, dataValues, userValue, label) {
-    const ctx = document.getElementById(canvasId).getContext('2d');
+    // Prepare bins and dataCounts
     const bins = [];
     for (let i = 30; i <= 250; i += 10) {
         bins.push(i);
@@ -842,29 +1281,27 @@ document.getElementById('donate-option').addEventListener('click', function() {
     const borderColors = backgroundColors.map((color, index) => index === userBinIndex ? 'white' : 'rgba(255,255,255,0.2)');
     const borderWidths = backgroundColors.map((color, index) => index === userBinIndex ? 3 : 1);
 
-  // Create a separate canvas for the pattern
-const patternCanvas = document.createElement('canvas');
-patternCanvas.width = 10;
-patternCanvas.height = 10;
-const patternCtx = patternCanvas.getContext('2d');
+    // Create a pattern for the user's bin
+    const patternCanvas = document.createElement('canvas');
+    patternCanvas.width = 10;
+    patternCanvas.height = 10;
+    const patternCtx = patternCanvas.getContext('2d');
 
-// Fill the pattern canvas with the background color of the user's bin
-patternCtx.fillStyle = backgroundColors[userBinIndex];
-patternCtx.fillRect(0, 0, patternCanvas.width, patternCanvas.height);
+    patternCtx.fillStyle = backgroundColors[userBinIndex];
+    patternCtx.fillRect(0, 0, patternCanvas.width, patternCanvas.height);
 
-// Draw stripes for the pattern over the background color
-patternCtx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
-patternCtx.lineWidth = 2;
-patternCtx.beginPath();
-patternCtx.moveTo(0, 0);
-patternCtx.lineTo(10, 10);
-patternCtx.stroke();
-patternCtx.beginPath();
-patternCtx.moveTo(10, 0);
-patternCtx.lineTo(0, 10);
-patternCtx.stroke();
+    patternCtx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+    patternCtx.lineWidth = 2;
+    patternCtx.beginPath();
+    patternCtx.moveTo(0, 0);
+    patternCtx.lineTo(10, 10);
+    patternCtx.stroke();
+    patternCtx.beginPath();
+    patternCtx.moveTo(10, 0);
+    patternCtx.lineTo(0, 10);
+    patternCtx.stroke();
 
-const pattern = ctx.createPattern(patternCanvas, 'repeat');
+    const pattern = ctx.createPattern(patternCanvas, 'repeat');
 
     // Apply pattern to user's bin
     const barBackgroundColors = backgroundColors.map((color, index) => {
@@ -875,7 +1312,8 @@ const pattern = ctx.createPattern(patternCanvas, 'repeat');
         }
     });
 
-    new Chart(ctx, {
+    // Create the new chart and store the instance
+    form[canvasId + 'ChartInstance'] = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: bins.map(bin => bin.toString()),
@@ -887,107 +1325,163 @@ const pattern = ctx.createPattern(patternCanvas, 'repeat');
             }]
         },
         options: {
-    scales: {
-        x: {
-            title: {
-                display: true,
-                text: label,
-                color: '#fff',
-                font: {
-                    size: 20 // Increase font size of x-axis title
-                }
-            },
-            ticks: {
-                color: '#fff',
-                font: {
-                    size: 14 // Increase font size of x-axis labels
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: label,
+                        color: '#fff',
+                        font: {
+                            size: 20
+                        }
+                    },
+                    ticks: {
+                        color: '#fff',
+                        font: {
+                            size: 14
+                        },
+                        maxRotation: 90,
+                        minRotation: 90,
+                        autoSkip: false
+                    },
+                    grid: {
+                        color: '#555'
+                    }
                 },
-                maxRotation: 90,
-                minRotation: 90,
-                autoSkip: false // Ensure all labels are shown
-            },
-            grid: {
-                color: '#555'
-            }
-        },
-        y: {
-            beginAtZero: true,
-            title: {
-                display: true,
-                color: '#fff',
-                font: {
-                    size: 20 // Increase font size of y-axis title
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: '#fff',
+                        font: {
+                            size: 14
+                        },
+                        callback: function(value) {
+                            return value + '%';
+                        }
+                    },
+                    grid: {
+                        color: '#555'
+                    }
                 }
             },
-            ticks: {
-                color: '#fff',
-                font: {
-                    size: 14 // Increase font size of y-axis labels
-                },
-                callback: function(value) {
-                    return value + '%';
+            plugins: {
+                legend: {
+                    display: false
                 }
-            },
-            grid: {
-                color: '#555'
             }
         }
-    },
-    plugins: {
-        legend: {
-            display: false
-        }
-    }
-}
-
     });
 }
 
+      
+        // Adjust the 'download-button' event listener
+document.querySelectorAll('#download-button').forEach(function(button) {
+    button.addEventListener('click', function() {
+        const parentSection = button.closest('.section');
+        const form = parentSection.querySelector('#bp-form');
 
-        // Image download functionality
-document.getElementById('download-button').addEventListener('click', function() {
-    const canvas1 = document.getElementById('systolicChart');
-    const canvas2 = document.getElementById('diastolicChart');
-    const title = "Está #Tensionada? " + new Date().toLocaleString();
+        const userSystolic = form.userSystolic;
+        const userDiastolic = form.userDiastolic;
+        const systolicColor = form.systolicColor;
+        const diastolicColor = form.diastolicColor;
 
-    // Create a temporary canvas to combine everything
-    const tempCanvas = document.createElement('canvas');
-    tempCanvas.width = 2000;
-    tempCanvas.height = 2400;
-    const ctx = tempCanvas.getContext('2d');
+        const canvas1 = parentSection.querySelector('#systolicChart');
+        const canvas2 = parentSection.querySelector('#diastolicChart');
+        const titleText = "#aTensão! A minha TA:";
+        const timestamp = new Date().toLocaleString();
 
-    // Draw background
-    ctx.fillStyle = '#000';
-    ctx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+        // Create a temporary canvas to combine everything
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = 2000;
+        tempCanvas.height = 2400;
+        const ctx = tempCanvas.getContext('2d');
 
-    // Draw title
-    ctx.fillStyle = '#fff';
-    ctx.font = 'bold 60px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText(title, tempCanvas.width / 2, 100);
+        // Draw background
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
 
-    // Draw charts
-    ctx.drawImage(canvas1, 100, 150, 1800, 800);
-    ctx.drawImage(canvas2, 100, 1000, 1800, 800);
+        // Set font and alignment
+        ctx.font = 'bold 60px Arial';
+        ctx.textBaseline = 'middle';
 
-    // Draw Nomeados
-    ctx.font = 'bold 48px Arial';
-    ctx.fillText('Nomeados:', tempCanvas.width / 2, 1900);
-    const nomeado1 = document.querySelector('input[name="nomeado1"]').value;
-    const nomeado2 = document.querySelector('input[name="nomeado2"]').value;
-    const nomeado3 = document.querySelector('input[name="nomeado3"]').value;
-    ctx.font = '48px Arial';
-    ctx.fillText(nomeado1, tempCanvas.width / 2, 2000);
-    ctx.fillText(nomeado2, tempCanvas.width / 2, 2100);
-    ctx.fillText(nomeado3, tempCanvas.width / 2, 2200);
+        // Measure widths
+        ctx.fillStyle = '#fff';
+        const titleTextWidth = ctx.measureText(titleText).width;
+        const timestampWidth = ctx.measureText(timestamp).width;
+        const slashWidth = ctx.measureText('/').width;
 
-    // Download image
-    const link = document.createElement('a');
-    link.download = 'Tensionada.png';
-    link.href = tempCanvas.toDataURL('image/png', 1.0);
-    link.click();
+        const systolicValueWidth = 200; // Fixed width for systolic value box
+        const diastolicValueWidth = 200; // Fixed width for diastolic value box
+
+        // Total width
+        const totalWidth = titleTextWidth + 20 + systolicValueWidth + 20 + slashWidth + 20 + diastolicValueWidth + 20 + timestampWidth;
+
+        // Starting X position
+        const startX = (tempCanvas.width - totalWidth) / 2;
+        const centerY = 100; // Vertical position
+
+        let currentX = startX;
+
+        // Draw title text
+        ctx.textAlign = 'left';
+        ctx.fillText(titleText, currentX, centerY);
+        currentX += titleTextWidth + 20;
+
+        // Draw systolic value with background
+        ctx.fillStyle = systolicColor;
+        ctx.fillRect(currentX, centerY - 40, systolicValueWidth, 80);
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'center';
+        ctx.fillText(userSystolic, currentX + systolicValueWidth / 2, centerY);
+        currentX += systolicValueWidth + 20;
+
+        // Draw '/'
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#fff';
+        ctx.fillText('/', currentX, centerY);
+        currentX += slashWidth + 20;
+
+        // Draw diastolic value with background
+        ctx.fillStyle = diastolicColor;
+        ctx.fillRect(currentX, centerY - 40, diastolicValueWidth, 80);
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'center';
+        ctx.fillText(userDiastolic, currentX + diastolicValueWidth / 2, centerY);
+        currentX += diastolicValueWidth + 20;
+
+        // Draw timestamp
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#fff';
+        ctx.fillText(timestamp, currentX, centerY);
+
+        // Draw charts
+        ctx.drawImage(canvas1, 100, centerY + 100, 1800, 800);
+        ctx.drawImage(canvas2, 100, centerY + 950, 1800, 800);
+
+        // Draw Nomeados
+        ctx.font = 'bold 48px Arial';
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'center';
+        ctx.fillText('Nomeados para Medirem também nas próximas 24h:', tempCanvas.width / 2, 1900);
+        const nomeado1 = form.querySelector('input[name="nomeado1"]').value;
+        const nomeado2 = form.querySelector('input[name="nomeado2"]').value;
+        const nomeado3 = form.querySelector('input[name="nomeado3"]').value;
+        ctx.font = '48px Arial';
+        ctx.fillText(nomeado1, tempCanvas.width / 2, 2000);
+        ctx.fillText(nomeado2, tempCanvas.width / 2, 2100);
+        ctx.fillText(nomeado3, tempCanvas.width / 2, 2200);
+
+        // Download image
+        const link = document.createElement('a');
+        link.download = 'Tensionada.png';
+        link.href = tempCanvas.toDataURL('image/png', 1.0);
+        link.click();
+
+        // Show alert
+        alert('A imagem foi transferida. Partilhe-a com #atensao e envie já para os nomeados.');
+    });
 });
-
+    
     </script>
 </body>
 </html>
