@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="https://i.postimg.cc/0yLDmmxY/images.png">
-  <meta property="og:title" content="Pressão Positiva">
+  <meta property="og:title" content="aTensão!">
 <meta property="og:description" content="Faça Parte da Missão de Controlar a Hipertensão em Portugal!">
 <meta property="og:image" content="https://i.postimg.cc/0yLDmmxY/images.png">
-<meta property="og:url" content="https://pressaopositiva.pt">
+<meta property="og:url" content="https://atensao.pt">
 <meta name="twitter:card" content="summary_large_image">
 
-    <title>Pressão Positiva</title>
+    <title>aTensão!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Include external CSS libraries -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -315,27 +315,28 @@
 
 <div class="container">
         <br>
-        <h1>Pressão Positiva</h1>
+        <h1>aTensão!</h1>
         <img src="https://i.postimg.cc/qMD1Pktw/giphy.webp;" width="300">
 
         <div class="subtitle">
             Faça Parte da <a href="https://www.missao7026.pt/missao/">Missão</a> de Controlar a Hipertensão em Portugal!
         </div>
         <div class="intro">
-            Quase metade dos portugueses são hipertensos. Muitos nem o sabem. Outros sabem e até podem já estar medicados mas com valores ainda elevados.
-          <p>É um fator de risco com um grande impacto na mortalidade. Por outro lado, é modificável. Porquê então ignorar?</p>
-          <p>Meça já a sua pressão arterial e pressione outros a medirem também!</p>
+            Se foi nomeado, tem 24 horas para medir a sua tensão arterial, senão depois tem de a medir sob a ameaça de um balde de água fria!
+            <br> E depois nomeie as próximas 3 vítimas.
         </div>
         <div class="options">
-            <div class="option" id="measure-option">Medir a Pressão Arterial</div>
-            <div class="option" id="donate-option">Inscrever a Empresa</div>
+            <div class="option" id="measure-option">Sem Balde de Água Fria</div>
+            <div class="option" id="donate-option">Com Balde de Água Fria</div>
         </div>
 
         <!-- Donate Section -->
-        <div class="section" id="measure-section">
+        <div class="section" id="donate-section">
             
             <h2>1) Preparar</h2>
             <ul class="checklist">
+              <li><input type="checkbox"> CASTIGO: Arranje um balde com água fria. (Ou pelo menos um copinho)</li>
+              <li><input type="checkbox"> ASSISTENTE: Arranje alguém que segure no balde de água até se saber se é para despejar ou não, consoante os valores da sua pressão arterial.</li>
               <li><input type="checkbox"> Medidor: Arranje um medidor de braço ou vá a uma farmácia.</li>
                 <li><input type="checkbox"> Repouso: Descanse 5 minutos antes.</li>
                 <li><input type="checkbox"> Posição corporal: Sente-se com as costas apoiadas e pés no chão.</li>
@@ -671,25 +672,375 @@
         </div>
 
         <!-- Measure Section -->
-        <div class="section" id="donate-section">
+        <div class="section" id="measure-section">
             
-            <a href="https://forms.gle/3Z1FJUoc1cutfADPA" target="_blank"><div class="share-button">Inscrever</div></a>
+            <h2>1) Preparar</h2>
+            <ul class="checklist">
+              <li><input type="checkbox"> Medidor: Arranje um medidor de braço ou vá a uma farmácia.</li>
+                <li><input type="checkbox"> Repouso: Descanse 5 minutos antes.</li>
+                <li><input type="checkbox"> Posição corporal: Sente-se com as costas apoiadas e pés no chão.</li>
+                <li><input type="checkbox"> Braço: Mantenha o braço apoiado numa mesa, à altura do coração.</li>
+                <li><input type="checkbox"> Manga: Coloque a manga do aparelho sem roupa por baixo.</li>
+                <li><input type="checkbox"> Silêncio: Fique em silêncio e relaxado durante a medição.</li>
+                <li><input type="checkbox"> Evitar estímulos: Não fale nem se mexa.</li>
+                <li><input type="checkbox"> Dupla medição: Depois de medir uma vez, pode aguardar um minuto e medir outra vez. Depois registe aqui os valores mais baixos.</li>
+            </ul>
+
+            <h2>2) Registar os Dados</h2>
+            <p>Todos os dados submetidos são anónimos e apenas para no fim vermos correlações e divulgarmos os gráficos com os resultados de todos.</p>
+            <p><a href="#" target="_blank">Política de Dados</a></p>
+
+            <!-- Form Section -->
+            <div class="form-section">
+                <form id="bp-form">
+                   <label>Foi Nomeado?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.723699953" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.723699953" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.723699953" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+                  
+                    <!-- Form fields -->
+                    <label>Local</label>
+                    <select name="entry.1583274680" required>
+                        <option value="">Selecione...</option>
+                        <option>Aveiro</option>
+                        <option>Beja</option>
+                        <option>Braga</option>
+                        <option>Bragança</option>
+                        <option>Castelo Branco</option>
+                        <option>Coimbra</option>
+                        <option>Évora</option>
+                        <option>Faro</option>
+                        <option>Guarda</option>
+                        <option>Leiria</option>
+                        <option>Lisboa</option>
+                        <option>Portalegre</option>
+                        <option>Porto</option>
+                        <option>Santarém</option>
+                        <option>Setúbal</option>
+                        <option>Viana do Castelo</option>
+                        <option>Vila Real</option>
+                        <option>Viseu</option>
+                        <option>Açores</option>
+                        <option>Madeira</option>
+                        <option>(Outro)</option>
+                    </select>
+
+                    <label>Idade</label>
+                    <input type="number" name="entry.696212112" required>
+
+                    <label>Sexo</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1319128627" value="Masculino" required>
+                            <span>Masculino</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1319128627" value="Feminino">
+                            <span>Feminino</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1319128627" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Pratica exercício físico regularmente?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1726477168" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1726477168" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1726477168" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Fuma ou já fumou?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.860347577" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.860347577" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.860347577" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Tem Diabetes?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.685994722" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.685994722" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.685994722" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Tem Hipertensão?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.2046806102" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.2046806102" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.2046806102" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Faz medicação para a Hipertensão?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.972051495" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.972051495" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.972051495" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Algum dos seus pais tem Hipertensão?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.551042757" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.551042757" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.551042757" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Mede regularmente a Tensão Arterial?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.57857287" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.57857287" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.57857287" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Tem Médico de Família?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1051135997" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1051135997" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1051135997" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Costuma ler Livros?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1923615331" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1923615331" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1923615331" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Bebe Café todos os dias?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.2007058090" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.2007058090" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.2007058090" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Costuma beber Vinho Tinto?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1702996945" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1702996945" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1702996945" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>O seu Emprego envolve Esforço Físico significativo?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.227784712" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.227784712" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.227784712" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <label>Costuma Dormir sempre pelo menos 8 horas?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.111959169" value="Sim" required>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.111959169" value="Não">
+                            <span>Não</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.111959169" value="Não respondo">
+                            <span>Não respondo</span>
+                        </label>
+                    </div>
+
+                    <!-- Nomeados -->
+                    <label>Nomeados (Quem é que nomeia a seguir para medir a Tensão Arterial dentro das próximas 24h?)</label>
+                    <input type="text" name="nomeado1" required>
+                    <input type="text" name="nomeado2" required>
+                    <input type="text" name="nomeado3" required>
+
+                    <br>
+                   <center><h2>3) Medir e Registar os Valores</h2></center>
+                  
+  <!-- Blood Pressure Inputs -->
+                    <label>Tensão Arterial Sistólica (número maior) (registe todos os algarismos)</label>
+                    <input type="number" name="entry.687029626" required min="30" max="290">
+
+                    <label>Tensão Arterial Diastólica (número menor) (registe todos os algarismos)</label>
+                    <input type="number" name="entry.1004921530" required min="30" max="290">
+                  
+                    <br>
+                   <center><h2>4) Submeter e ver se os Valores estão bem ou não</h2></center>
+                    <button type="submit" class="submit-button">Submeter</button>
+                </form>
+            </div>
+
+            <!-- Charts Section -->
+          <center>  
+          <div class="charts">
+              
+                <div class="chart-container">
+                    <canvas id="systolicChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="diastolicChart"></canvas>
+                </div>
+            </div>
+            </center>
+
+            <!-- Share Section -->
+            <h2>5) Partilhar!</h2>
+            <div class="share-button" id="download-button">Transferir a Imagem para Partilhar</div>
+          
+             <!-- Study -->
+          <br><br>
+            <h2>6) Controlar a Tensão Arterial</h2>
+          <p>Quer continuar o desafio e monitorizar a sua tensão arterial durante um mês? Junte-se ao nosso grupo.</p>
+          <a href="https://forms.gle/3Z1FJUoc1cutfADPA" target="_blank"><div class="share-button">Inscrever</div></a>
           
         </div>
       
+        <!-- Participants Section -->
+        <div class="participants">
+            <h2>Outros que já participaram</h2>
+            <!-- YouTube Videos -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/XS6ysDFTbLU" frameborder="0" allowfullscreen></iframe>
+            <!-- Instagram Posts -->
+          
+            <!-- TikTok Videos -->
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@bhadbelieber/video/7236835471395933467" data-video-id="7236835471395933467" style="margin: 20px auto; width: 100%; min-width: 325px; max-width: 605px;">
+                <section></section>
+            </blockquote>
+        </div>
+
         <!-- Footer -->
         <div class="footer">
-          <a href="https://sphta.org.pt/missao-70-26/" target="_blank">
-<img src="https://revistahipertensao.pt/public/site/images/admin/logo-sphta-5.png" alt="Trulli" width="150"></a>
+          <a href="https://world-heart-federation.org/world-heart-day/" target="_blank">
+<img src="https://world-heart-federation.org/world-heart-day/wp-content/uploads/sites/2/2021/05/WHD-logo.svg" alt="Trulli" width="150"></a>
           <br><br>
-           <p> <a href="https://www.instagram.com/" target="_blank">Instagram</a></p>
+           <p> <a href="https://www.instagram.com/medicinupgram/" target="_blank">Instagram</a></p>
+           <p> <a href="https://www.medicinup.com/" target="_blank">MedicinUp</a></p>
           <br>
             © 2024
-            <br>By <a href="https://www.linkedin.com/in/andrefrsilva/" target="_blank">André</a>, <a href="https://www.linkedin.com/in/adrianacmonteiro/" target="_blank">Adriana</a> and <a href="https://www.linkedin.com/" target="_blank">Miriam</a><br>From Lisbon, with ❤️       
+            <br>By <a href="https://www.linkedin.com/in/andrefrsilva/" target="_blank">André</a> and <a href="https://www.linkedin.com/in/adrianacmonteiro/" target="_blank">Adriana</a><br>From Lisbon, with ❤️       
            
         </div>
     </div>
 
+    <!-- Include external JS libraries -->
+    <script async src="https://www.instagram.com/embed.js"></script>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+    <!-- Custom JavaScript -->
     <script>
 document.getElementById('measure-option').addEventListener('click', function() {
     document.getElementById('measure-section').style.display = 'block';
